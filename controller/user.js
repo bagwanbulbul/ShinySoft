@@ -82,15 +82,16 @@ exports.edit_profile =(req,res)=>{
     })
 }
 
-exports.delte_user = (req,re)=>{
+exports.delte_user = (req,res)=>{
     const {
         user_id
     }= req.body;
-    User.remove({_id:user_id})
+    User.deleteOne({_id:user_id})
     .then(result =>{
-        res.json({statusCode:"200", statusMsj:"data deleted"})
+        res.send("delete successfuly")
     }).catch(err=>{
         res.send(err)
+        console.log(err)
     })
     
 }
